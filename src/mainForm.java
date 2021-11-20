@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jpl7.*;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Map;
@@ -25,6 +24,8 @@ public class mainForm {
     private JTextField totalComprasLoja;
     private JTextArea resultado;
     private JPanel painel;
+
+    public static String BASE_DE_DADOS = null;
 
     public mainForm() {
         foiComprado.addActionListener(new ActionListener() {
@@ -109,6 +110,15 @@ public class mainForm {
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+        JOptionPane.showMessageDialog(null, "Selecione a base de dados.");
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("pl", "pl");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            BASE_DE_DADOS = chooser.getSelectedFile().getAbsolutePath();
+        }
     }
 
     public ArrayList<String> lerXml(String caminho) {
@@ -157,7 +167,9 @@ public class mainForm {
                             break;
                         case Cell.CELL_TYPE_STRING:    //field that represents string cell type
                             //getting the value of the cell as a string
+                            fato = fato.concat("'");
                             fato = fato.concat(cell.getStringCellValue());
+                            fato = fato.concat("'");
                             break;
                     }
                 }
@@ -172,19 +184,13 @@ public class mainForm {
     }
 
     public void adicionarFatosNaBaseDeDados(ArrayList<String> fatos) throws IOException {
-        JOptionPane.showMessageDialog(null, "Selecione a base de dados.");
-        JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("pl", "pl");
-        chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(null);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            FileWriter fw = new FileWriter(chooser.getSelectedFile().getAbsolutePath(), true);
-            for (String f: fatos) {
-                fw.write(f);
-                fw.write(System.getProperty( "line.separator" ));
-            }
-            fw.close();
-            JOptionPane.showMessageDialog(null, "Planilha importada com sucesso!!");
+        FileWriter fw = new FileWriter(BASE_DE_DADOS, true);
+        for (String f: fatos) {
+            fw.write(System.getProperty( "line.separator" ));
+            fw.write(f);
         }
+        fw.close();
+        JOptionPane.showMessageDialog(null, "Planilha importada com sucesso!!");
     }
 }
+

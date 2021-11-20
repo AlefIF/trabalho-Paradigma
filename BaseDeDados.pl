@@ -25,3 +25,5 @@ comprado_em(Data, Produtos) :-
 compra_na_loja(Loja, Valor) :-
     findall(Valor, gasto(_, _, Loja, _, _, _, Valor), Soma),
     sumlist(Soma, Valor).
+
+%Daki pra baixo eh importacao
