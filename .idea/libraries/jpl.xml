@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="jpl">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../Program Files/swipl/lib/jpl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bibliotecas_Ultilizadas/xmlbeans-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bibliotecas_Ultilizadas/poi-ooxml-schemas-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bibliotecas_Ultilizadas/poi-ooxml-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bibliotecas_Ultilizadas/poi-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bibliotecas_Ultilizadas/commons-collections4-4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
