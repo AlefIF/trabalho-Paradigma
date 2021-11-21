@@ -2,11 +2,18 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFDataFormat;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jpl7.*;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 
 public class mainForm {
@@ -17,7 +24,6 @@ public class mainForm {
     private JButton valorTotalDoProdutoButton;
     private JButton oQueFoiCompradoButton;
     private JTextField textComprado;
-    private JButton produtoMaisCompradoButton;
     private JTextField textQtdTotal;
     private JTextField textValor;
     private JTextField textCompradoData;
@@ -162,8 +168,18 @@ public class mainForm {
                     switch(formulaEvaluator.evaluateInCell(cell).getCellType())
                     {
                         case Cell.CELL_TYPE_NUMERIC:   //field that represents numeric cell type
-                            //getting the value of the cell as a number
-                            fato = fato.concat(String.valueOf(cell.getNumericCellValue()));
+
+                            if(HSSFDateUtil.isCellDateFormatted(cell))
+                            {
+                                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                                Date date = cell.getDateCellValue();
+                                fato = fato.concat("'");
+                                fato = fato.concat(df.format(date));
+                                fato = fato.concat("'");
+                            } else {
+                                //getting the value of the cell as a number
+                                fato = fato.concat(String.valueOf(cell.getNumericCellValue()));
+                            }
                             break;
                         case Cell.CELL_TYPE_STRING:    //field that represents string cell type
                             //getting the value of the cell as a string

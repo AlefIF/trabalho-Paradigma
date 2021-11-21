@@ -66,14 +66,6 @@
           <text value="Total de compras na loja "/>
         </properties>
       </component>
-      <component id="a5026" class="javax.swing.JButton" binding="produtoMaisCompradoButton" default-binding="true">
-        <constraints>
-          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Produto mais comprado"/>
-        </properties>
-      </component>
       <component id="88e5b" class="javax.swing.JTextField" binding="textQtdTotal">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
