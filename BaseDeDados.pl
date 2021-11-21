@@ -1,8 +1,8 @@
-%trab
-gasto('01-09-2021', 'Cimento Campeão CPII', 'Loja do Zé', 20, saco, 28.00, 560.00).
-gasto('02-09-2021', 'tijolo', 'Loja do Zé', 10, unidade, 10.00, 100.00).
-gasto('02-09-2021', 'tijolo', 'Loja do Zé', 5, unidade, 10.00, 50.00).
-gasto('02-09-2021', 'Sabao', 'Loja do Zé', 5, unidade, 10.00, 50.00).
+%fatos testes
+gasto('01/09/2021', 'Cimento Campeão CPII', 'Loja do Zé', 20, 'saco', 28.00, 560.00).
+gasto('02/09/2021', 'tijolo', 'Loja do Zé', 10, 'unidade', 10.00, 100.00).
+gasto('02/09/2021', 'tijolo', 'Loja do Zé', 5, 'unidade', 10.00, 50.00).
+gasto('02/09/2021', 'Sabao', 'Loja do Zé', 5, 'unidade', 10.00, 50.00).
 
 
 % comprado_em(’10-09-2021’).
